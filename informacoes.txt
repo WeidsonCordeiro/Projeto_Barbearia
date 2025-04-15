@@ -8,3 +8,7 @@ https://www.youtube.com/watch?v=04QoJx7r_XQ&list=PL_Axpn7FrXHR3nZiQPHFClLu6VByhW
 //Testando API's
 https://app.insomnia.rest/
 https://web.postman.co/
+- Extensão do VSCode "Thunder Client"
+
+//Uploud de Arquivos
+- console.aws.amazon.com
