@@ -1,0 +1,10 @@
+-- Diagrama
+https://app.diagrams.net/
+
+
+-- Passo o Passo deste App
+https://www.youtube.com/watch?v=04QoJx7r_XQ&list=PL_Axpn7FrXHR3nZiQPHFClLu6VByhWkzG&index=2
+
+//Testando API's
+https://app.insomnia.rest/
+https://web.postman.co/
