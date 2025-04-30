@@ -2,11 +2,15 @@ const express = require('express');
 const app = express();
 const morgan = require('morgan');
 const cors = require('cors');
+const busboy = require('connect-busboy');
+const busboyBodyParser = require('busboy-body-parser');
 require('./database')
 
 //MiddleWares
 app.use(morgan('dev')); // Só funcione em ambiente de dev)
 app.use(express.json()); // Para receber dados em formato JSON
+app.use(busboy());
+app.use(busboyBodyParser());
 app.use(cors()); // Para permitir requisições de outros domínios
 
 //Variables
