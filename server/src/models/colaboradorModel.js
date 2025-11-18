@@ -10,7 +10,7 @@ const colaborador = new Schema({
         type: String,
         default: null
     },
-    email:  {
+    email: {
         type: String,
         require: [true, 'Email é obrigatório.'],
     },
@@ -28,12 +28,12 @@ const colaborador = new Schema({
     },
     sexo: {
         type: String,
-        enum: ['M','F'],
+        enum: ['M', 'F'], //M=Masculino, F=Feminino
         require: [true, 'Sexo é obrigatório.'],
     },
     status: {
         type: String,
-        enum: ['A','I'],
+        enum: ['A', 'I'], //A=Ativo, I=Inativo
         require: [true, 'Status é obrigatório.'],
         default: 'A',
     },
@@ -62,12 +62,12 @@ const colaborador = new Schema({
             type: String,
             require: [true, 'Numero da Conta é obrigatório.'],
         },
-        dv:{
+        dv: {
             type: String,
             require: [true, 'Digito Verificador da Conta é obrigatório.'],
         },
     },
-    recipienteId:{
+    recipienteId: {
         type: String,
         require: [true, 'ID é obrigatório.'],
     },
@@ -75,7 +75,7 @@ const colaborador = new Schema({
         type: Date,
         default: Date.now,
     }
-});
+}, { collection: 'colaborador' });
 
 
 module.exports = mongoose.model('Colaborador', colaborador);

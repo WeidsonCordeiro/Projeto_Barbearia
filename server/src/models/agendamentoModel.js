@@ -42,6 +42,6 @@ const agendamento = new Schema({
         type: Date,
         default: Date.now,
     }
-});
+}, { collection: 'agendamento' });
 
 module.exports = mongoose.model('Agendamento', agendamento);

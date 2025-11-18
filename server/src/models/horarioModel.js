@@ -18,7 +18,7 @@ const horario = new Schema({
         require: true,
     }],
     dias: {
-        type: [Number],
+        type: [Number], //0=Domingo, 1=Segunda, ..., 6=Sábado
         require: true,
     },
     inicio: {
@@ -33,6 +33,6 @@ const horario = new Schema({
         type: Date,
         default: Date.now,
     }
-});
+}, { collection: 'horario' });
 
 module.exports = mongoose.model('Horario', horario);

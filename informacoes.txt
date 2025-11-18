@@ -12,3 +12,6 @@ https://web.postman.co/
 
 //Uploud de Arquivos
 - console.aws.amazon.com
+
+//API de processamento de pagamento
+https://docs.pagar.me/

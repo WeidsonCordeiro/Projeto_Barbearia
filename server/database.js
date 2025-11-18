@@ -1,14 +1,21 @@
-const mongoose = require("mongoose");
-const URI = "mongodb+srv://barbearia_root:Barbearia.2025_@cluster0.farg7.mongodb.net/barbearia?retryWrites=true&w=majority&appName=Cluster0";
+const mongoose = require('mongoose');
+require('dotenv').config();
 
-//  Opção removida no Mongoose 6+
-// mongoose.set("useNewUrlParser", true);
-// mongoose.set("useFindAndModify", true);
-// mongoose.set("useCreateIndex", true);
-// mongoose.set("useUnifiedTopoLoggy", true);
+const dbUser = process.env.DB_USER;
+const dbPassword = process.env.DB_PASSWORD;
+const dbHost = process.env.DB_HOST;
+const URI = `mongodb+srv://${dbUser}:${dbPassword}@${dbHost}/barbearia?retryWrites=true&w=majority&appName=Cluster0`;
 
-mongoose
-    .connect(URI)
-    .then(() => console.log("Conectado ao MongoDB!"))
-    .catch(err => console.error("Erro na conexão:", err));
+const conn = async () => {
+    try {
+        const dbConn = await mongoose.connect(URI);
+        console.log("Conectado ao MongoDB!");
+        return dbConn;
+    } catch (error) {
+        console.error("Erro na conexão:", error);
+    }
+};
 
+conn();
+
+module.exports = conn;

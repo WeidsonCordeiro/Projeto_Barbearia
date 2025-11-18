@@ -26,12 +26,12 @@ const servico = new Schema({
         type: Number, //Periodo de refação do serviço em dias
     },
     descricao: {
-        type: String, 
+        type: String,
         require: [true, 'Descricao do Servico é obrigatório.']
     },
     status: {
         type: String,
-        enum: ['A','I','E'],
+        enum: ['A', 'I', 'E'], //A=Ativo, I=Inativo, E=Excluído
         require: [true, 'Status é obrigatório.'],
         default: 'A',
     },
@@ -39,7 +39,7 @@ const servico = new Schema({
         type: Date,
         default: Date.now,
     }
-});
+}, { collection: 'servico' });
 
 
 module.exports = mongoose.model('Servico', servico);

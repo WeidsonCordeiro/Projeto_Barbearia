@@ -8,7 +8,7 @@ const salao = new Schema({
     },
     foto: String,
     capa: String,
-    email:  {
+    email: {
         type: String,
         require: [true, 'Email é obrigatório.']
     },
@@ -32,8 +32,8 @@ const salao = new Schema({
         type: Date,
         default: Date.now,
     }
-});
+}, { collection: 'salao' });
 
-salao.index({geo: '2dsphere'});
+salao.index({ geo: '2dsphere' }); // Índice geoespacial para consultas de proximidade
 
 module.exports = mongoose.model('Salao', salao);

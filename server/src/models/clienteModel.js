@@ -10,7 +10,7 @@ const cliente = new Schema({
         type: String,
         default: null
     },
-    email:  {
+    email: {
         type: String,
         require: [true, 'Email é obrigatório.'],
     },
@@ -24,13 +24,13 @@ const cliente = new Schema({
     },
     status: {
         type: String,
-        enum: ['A','I'],
+        enum: ['A', 'I'], //A=Ativo, I=Inativo
         require: [true, 'Status do Cliente é obrigatório.'],
         default: 'A',
     },
     sexo: {
         type: String,
-        enum: ['M','F'],
+        enum: ['M', 'F'], // M=Masculino, F=Feminino
         require: [true, 'Sexo é obrigatório.'],
     },
     dataNascimento: {
@@ -38,12 +38,12 @@ const cliente = new Schema({
         require: [true, 'Data de Nascimento é obrigatório.'],
     },
     documento: {
-        tipo:{
+        tipo: {
             type: String,
-            enum: ['individual','corporation'],
+            enum: ['individual', 'corporation'],
             require: true,
         },
-        numero:{
+        numero: {
             type: String,
             require: true,
         }
@@ -59,7 +59,7 @@ const cliente = new Schema({
         type: Date,
         default: Date.now,
     }
-});
+}, { collection: 'cliente' });
 
 
 module.exports = mongoose.model('Cliente', cliente);

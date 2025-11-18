@@ -1,24 +1,35 @@
+require("dotenv").config();
 const express = require('express');
+const morgan = require('morgan'); // Log de requisições HTTP
+const cors = require('cors'); // Habilitar CORS
+const busboy = require('connect-busboy'); // Para upload de arquivos
+const busboyBodyParser = require('busboy-body-parser'); // Para fazer o parser do corpo das requisições com arquivos
+const router = require('./src/routes/Router.js');
+
+
+const port = process.env.PORT || 5000;
 const app = express();
-const morgan = require('morgan');
-const cors = require('cors');
-const busboy = require('connect-busboy');
-const busboyBodyParser = require('busboy-body-parser');
-require('./database')
 
 //MiddleWares
-app.use(morgan('dev')); // Só funcione em ambiente de dev)
+app.use(morgan('dev')); // Só funcione em ambiente de dev
 app.use(express.json()); // Para receber dados em formato JSON
-app.use(busboy());
-app.use(busboyBodyParser());
+app.use(busboy()); // Para upload de arquivos
+app.use(busboyBodyParser()); // Para fazer o parser do corpo das requisições com arquivos
 app.use(cors()); // Para permitir requisições de outros domínios
+app.use(express.urlencoded({ extended: false })); //
 
-//Variables
-app.set('port', 8000);
+//DB Connection
+const db = require("./database.js");
 
-//Rotas
-app.use('/salao', require('./src/routes/salao.routes'));
+//Routes
+app.use(router);
 
-app.listen(app.get('port'), () => {
-    console.log(`Servidor rodando em http://localhost:${app.get('port')}`);
-})
+//Middleware de Tratamento de Erros Global:
+app.use((err, req, res, next) => {
+    console.error(err.message);
+    res.status(500).json({ errors: [err.message] });
+});
+
+app.listen(port, () => {
+    console.log(`🚀 Servidor rodando em http://localhost:${port}`);
+});

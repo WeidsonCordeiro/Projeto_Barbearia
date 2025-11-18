@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const arquivo = new Schema({
-    referenciaIs: {
+    referenciaId: {
         type: Schema.Types.ObjectId,
         refPath: 'model', //Referenciação dinâmica
     },
@@ -19,6 +19,6 @@ const arquivo = new Schema({
         type: Date,
         default: Date.now,
     }
-});
+}, { collection: 'arquivo' });
 
 module.exports = mongoose.model('Arquivo', arquivo);
